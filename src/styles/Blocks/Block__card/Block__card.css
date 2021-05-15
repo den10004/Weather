@@ -1,0 +1,37 @@
+@import url(./blocks__card__header/blocks__card__header.css);
+@import url(./blocks__card__inputs/blocks__card__inputs.css);
+@import url(./blocks__card__select/blocks__card__select.css);
+@import url(./block__card__image/block__card__image.css);
+@import url(./blocks__card__text/blocks__card__text.css);
+
+
+  .blocks__card {
+    width: 548px;
+    height: 524px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+    border-radius: 8px;
+    padding: 50px 56px 0px 56px; 
+    margin: 0;
+  }
+  
+
+  @media (max-width: 1280px) {
+    .blocks__card {
+    margin-bottom: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .blocks__card {
+      padding: 32px 24px 0px 24px; 
+    }
+  }
+  
+
+
+
+

@@ -1,0 +1,41 @@
+
+   .headline__text {
+    font-family: 'Ubuntu', 'Arial';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 102px;
+    line-height: 122px;
+    color: #FFFFFF;
+    text-align: left;
+    margin: 0;
+  }
+  
+  .headline__text_right {
+    font-family: 'Ubuntu', 'Arial';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 102px;
+    line-height: 122px;
+    color: #FFFFFF;
+    text-align: right;
+  }
+  
+  
+  @media (max-width: 500px) {
+    .headline__text {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+  
+  .headline__text2 {
+    font-family: 'Ubuntu', 'Arial';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 102px;
+    line-height: 122px;
+    color: #FFFFFF;
+    margin: 0px;
+   
+  }
+  

@@ -1,0 +1,10 @@
+.block__card__image {
+    margin: 60px auto 28px;
+  }
+  
+  
+  @media (max-width: 425px) {
+    .block__card__image  {
+      margin: 14px auto 24px;
+    }
+  }

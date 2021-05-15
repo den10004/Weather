@@ -1,0 +1,14 @@
+.blocks__card__inputs {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+
+
+  @media (max-width: 640px) {
+    .blocks__card__inputs  {
+      flex-direction: column;
+    }
+  }
+  

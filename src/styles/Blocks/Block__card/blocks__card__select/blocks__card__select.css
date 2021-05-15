@@ -1,0 +1,19 @@
+@import url(./blocks__card__select-city/blocks__card__select-city.css);
+  
+  
+  .blocks__card__select {
+    width: 252px;
+    height: 48px;
+    background: rgba(128, 131, 164, 0.06);
+    border: 2px solid rgba(128, 131, 164, 0.2);
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #8083A4;
+  }
+
+  @media (max-width: 640px) {
+    .blocks__card__select  {
+      margin-bottom: 24px;
+    }
+  }
+  

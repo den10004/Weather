@@ -1,0 +1,40 @@
+@import url(./Headline__text/Headline__text.css);
+
+
+.headline {
+    display: flex;
+     flex-direction: column;
+     width: 75vw;
+   /*padding: 0px 290px 0px 290px;*/
+   }
+   
+   @media (max-width: 500px) {
+     .headline {
+       width: 100vw;
+     }
+   }
+   
+   @media (max-width: 1024px) {
+     .headline {
+       width: 618px;
+     }
+   }
+   
+   @media (max-width: 670px) {
+     .headline {
+       width: 518px;
+     }
+   }
+   
+   @media (max-width: 560px) {
+     .headline {
+       width: 347px;
+     }
+   }
+   
+   @media (max-width: 375px) {
+     .headline {
+       width: 300px;
+     }
+   }
+   
