@@ -3,6 +3,16 @@ import './App.css';
 
 
 function App() {
+
+  const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d';
+
+  getWeather = async () => {
+    const api_url = await
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=${KEY}`)
+  const data = await api_url.json()
+  console.log(data)
+  }
+
   return (
     <div className="App">
 
