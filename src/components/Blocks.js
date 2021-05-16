@@ -1,6 +1,7 @@
 //import '../styles/Blocks/Block.css';
-import cloud from '../images/cloud.svg';
-
+import CloudImage from './CloudImage'
+import OneDayForecast from './OneDayForecast'
+import SevenDaysForecast from './SevenDaysForecast'
 
 
 function Blocks() {
@@ -15,8 +16,8 @@ function Blocks() {
             <option>Пункт 2</option>
           </select>
         </div>
-        <img className="block__card__image" src={cloud} alt='cloud_image' />
-        <h4 className="blocks__card__text">Fill in all the fields and the weather will be displayed</h4>
+       < SevenDaysForecast />
+       
       </div>
 
 
@@ -33,8 +34,8 @@ function Blocks() {
             <option>Пункт 2</option>
           </select>
         </div>
-        <img className="block__card__image" src={cloud} alt='cloud_image'></img>
-        <h4 className="blocks__card__text">Fill in all the fields and the weather will be displayed</h4>
+        < OneDayForecast />
+        
       </div>
     </div>
   );
