@@ -4,14 +4,17 @@ import './App.css';
 
 function App() {
 
-  const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d';
+  function getData() {
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let date = new Date()
+    let dataF = date.getDate()
+    let month = months[date.getMonth()]
+    let year = date.getFullYear()
 
-  getWeather = async () => {
-    const api_url = await
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=${KEY}`)
-  const data = await api_url.json()
-  console.log(data)
+    return `${dataF} ${month} ${year}`
   }
+  //console.log()
+
 
   return (
     <div className="App">
@@ -21,7 +24,7 @@ function App() {
           <h1 className="headline__text">Weather</h1>
           <h1 className="headline__text headline__text_right">forecast</h1>
         </div>
-        <Block />
+        <Block getData={getData} />
 
         <footer className="footer">
           <h4 className="footer__text">C ЛЮБОВЬЮ ОТ MERCURY DEVELOPMENT</h4>

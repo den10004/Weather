@@ -9,6 +9,7 @@
     box-sizing: border-box;
     border-radius: 8px;
     color: #8083A4;
+    position: relative;
   }
 
   @media (max-width: 640px) {
