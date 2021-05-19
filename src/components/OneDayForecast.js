@@ -3,7 +3,7 @@ import '../styles/OneDayForecast/oneDayForecast.css'
 
 
 function OneDayForecast({temp, ima, datesToRender}) {
-
+    
     
     return (
        

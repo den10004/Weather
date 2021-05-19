@@ -135,7 +135,7 @@ function Blocks() {
    // getWeatherAfter(lat, lon) //асинхрон запрос
   }
 
-  function changeCity2 (event, lat, lon) {
+  function changeCitySevenDays (event, lat, lon) {
       setSelectCity({ value: event.target.value })//кнопка
     getWeather7days(51.533557, 46.034257) //асинхрон запрос
     // getWeather7days(lat, lon) //асинхрон запрос
@@ -155,7 +155,7 @@ function Blocks() {
         <div className="blocks__card__inputs">
 
 
-          <select className="blocks__card__select" value={selectCity.value} onChange={changeCity2} placeholder="Select City" selected>
+          <select className="blocks__card__select" value={selectCity.value} onChange={changeCitySevenDays} placeholder="Select City" selected>
             <option type="text" name="city" value="Самара">Самара</option>
             <option type="text" name="city" value="Тольятти">Тольятти</option>
             <option type="text" name="city" value="Саратов">Саратов</option>
@@ -178,13 +178,11 @@ function Blocks() {
             <option>Казань</option>
             <option>Краснодар</option>
           </select>
-          <div className="blocks__card__select">
-            <div className="blocks__card__select-city">Select date</div>
-            <button className="blocks__card__select-button" onClick={() => setModal(true)}></button>
+          <input className="blocks__card__select" placeholder="Select data">
 
-            <Modal isOpened={modal} setModal={setModal} />
+           { /*<Modal isOpened={modal} setModal={setModal} />*/}
 
-          </div>
+          </input>
         </div>
         < OneDayForecast temp={temp} ima={ima} datesToRender={datesToRender} />
 

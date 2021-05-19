@@ -11,22 +11,29 @@ function SevenDaysForecast({ dataSeven }) {
       let keys = Object.values(dataSeven)
   
       //console.log(keys[0][0].temp.day)
-      //console.log(keys[0])
+      let x = keys[0]
       // console.log(keys[0][0].dt)
       //console.log(keys[0][0].temp.day)
       //console.log(keys[0][0].weather.icon)
 
-      let x = keys[0]
+      console.log(x) //рендер идёт, но потом всё падает
      
-      console.log(x)
+      //console.log(x)
 
+/*
+      function q (x) {
+            if (x) {
+                  <li>Ничего нет</li>} 
+            else {<li>dfd</li>}
+      }   
+      q(x)*/
      
       return (
 
                <div className="sevenDaysForecast">
                   <div className="slider">
                         {
-                              Object.values(dataSeven).map((e) =>
+                              keys.map((e) =>
                                  
                                     <div className="slider__card">
                                           <div className="slider__card__data">{e.dt}</div>
@@ -36,12 +43,7 @@ function SevenDaysForecast({ dataSeven }) {
                               )
                         }
                     
-
-                    
-
-
-
-                        <div className="slider__card">
+                      {/*  <div className="slider__card">
                               <div className="slider__card__data"></div>
                               <img className="slider__card__image" src={rain} alt='rain_image' />
                               <div className="slider__card__temperature">&deg;C</div>
@@ -51,7 +53,7 @@ function SevenDaysForecast({ dataSeven }) {
                               <div className="slider__card__data">hj</div>
                               <img className="slider__card__image" src={rain} alt='rain_image' />
                               <div className="slider__card__temperature"> C</div>
-                        </div>
+                  </div>*/}
 
 
 
