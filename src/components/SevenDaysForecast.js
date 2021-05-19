@@ -10,13 +10,14 @@ function SevenDaysForecast({ dataSeven }) {
       // let key = dataSeven
       let keys = Object.values(dataSeven)
   
+      console.log(keys)
       //console.log(keys[0][0].temp.day)
       let x = keys[0]
       // console.log(keys[0][0].dt)
       //console.log(keys[0][0].temp.day)
       //console.log(keys[0][0].weather.icon)
 
-      console.log(x) //рендер идёт, но потом всё падает
+       //console.log(x) //рендер идёт, но потом всё падает
      
       //console.log(x)
 

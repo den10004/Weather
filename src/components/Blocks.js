@@ -13,8 +13,9 @@ function Blocks() {
   const [modal, setModal] = useState(false)
   const [selectCity, setSelectCity] = useState('')
 
-  const selectCityToString = Object.values(selectCity).join()
 
+  const selectCityToString = Object.values(selectCity).join()
+ // console.log(selectCityToString)
 
   //переводит города в координаты
   let arr = (selectCityToString === 'Самара') ? ([53.195873, 50.100193]) :
@@ -23,20 +24,18 @@ function Blocks() {
         (selectCityToString === 'Казань') ? ([55.796127, 49.106405]) :
           (selectCityToString === 'Краснодар') ? ([45.035470, 38.975313]) :
             []
+console.log(arr)
 
+let lat = arr[0]
+let lon = arr[1]
 
-  let lat = arr[0]
-  let lon = arr[1]
-
-  //console.log('start', lat)
-  //console.log('start', lon)
+  console.log('start', lat)
+  console.log('start', lon)
  
   const [wea, setWea] = useState('') //из прошлого
   const [image, setImage] = useState('')
   const [dates, setDates] = useState('')
 
-  const [tempS, setTempS] = useState('')  //7 дней
-  const [date, setDate] = useState('')
   const [dataSeven, setDataSeven] = useState('')
 
 
@@ -95,32 +94,9 @@ function Blocks() {
     const data = await api_weather_url.json()
    // console.log(data.daily)
     let dataSeven = data.daily
-  //  console.log(dataSeven)
-/*
-    const data1 = JSON.stringify(xx)
-    console.log(data1)
-    const data2 = JSON.parse(data1)
-    console.log(data2)*/
-/*
-    let date = xx.map(item => {
-      return item.dt 
-    })
-   
-
-   let tempS = xx.map(item => {
-    return Math.ceil(item.temp.day )
-  })
-   */
-    //console.log(data1.daily[0].temp.day)
-    // console.log(data.daily[0].weather[0].icon)
-   /* let icons = xx.map(item => {
-      return item.weather
-    })*/
-    //  console.log(icons)
 
       setDataSeven({dataSeven})
-     // setDate({date})
-     // setTempS({tempS})
+
 
   }
 
@@ -136,16 +112,16 @@ function Blocks() {
   }
 
   function changeCitySevenDays (event, lat, lon) {
-      setSelectCity({ value: event.target.value })//кнопка
-    getWeather7days(51.533557, 46.034257) //асинхрон запрос
-    // getWeather7days(lat, lon) //асинхрон запрос
+    console.log(event.target.value)
+  //  console.log(lat)
+    //console.log(lon)
+      setSelectCity({ value: event.target.value })//кнопка забирает данные с кнопки
+     getWeather7days(51.533557, 46.034257) //асинхрон запрос
   }
 
+  console.log(selectCity.value)  //получает город
 
 
-  //getWeather(lat, lon)
-  // console.log("get", lat)
-  //console.log("get", lon)
 
   return (
     <div className="blocks">
