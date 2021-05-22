@@ -4,45 +4,40 @@ import { React, useState } from 'react'
 
 import OneDayForecast from './OneDayForecast'
 import SevenDaysForecast from './SevenDaysForecast'
-import Modal from './Modal'
+//import Modal from './Modal'
 
 
 function Blocks() {
 
 
-  const [modal, setModal] = useState(false)
-  const [selectCity, setSelectCity] = useState('')
+  // const [modal, setModal] = useState(false)
+  const [selectCity, setSelectCity] = useState([])
+
 
 
   const selectCityToString = Object.values(selectCity).join()
- // console.log(selectCityToString)
+  //console.log(selectCityToString)
 
-  //переводит города в координаты
-  let arr = (selectCityToString === 'Самара') ? ([53.195873, 50.100193]) :
-    (selectCityToString === 'Тольятти') ? ([53.507836, 49.420393]) :
-      (selectCityToString === 'Саратов') ? ([51.533557, 46.034257]) :
-        (selectCityToString === 'Казань') ? ([55.796127, 49.106405]) :
-          (selectCityToString === 'Краснодар') ? ([45.035470, 38.975313]) :
-            []
-console.log(arr)
 
-let lat = arr[0]
-let lon = arr[1]
+  const cities = {
+    'Самара': [53.195873, 50.100193],
+    'Тольятти': [53.507836, 49.420393],
+    'Саратов': [51.533557, 46.034257],
+    'Казань': [55.796127, 49.106405],
+    'Краснодар': [45.035470, 38.975313],
+  }
 
-  console.log('start', lat)
-  console.log('start', lon)
- 
-  const [wea, setWea] = useState('') //из прошлого
-  const [image, setImage] = useState('')
-  const [dates, setDates] = useState('')
 
-  const [dataSeven, setDataSeven] = useState('')
+  const [wea, setWea] = useState([]) //из прошлого
+  const [image, setImage] = useState([])
+  const [dates, setDates] = useState([])
+
+  //const [dataSeven, setDataSeven] = useState('')
+  const [dataSeven, setDataSeven] = useState([])
 
 
 
   const getWeatherAfter = async (lat, lon) => {
-  //  console.log(lat)
-   // console.log(lon)
 
     //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d';
     const KEY = '82b797b6ebc625032318e16f1b42c016'
@@ -52,10 +47,7 @@ let lon = arr[1]
     const api_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&units=metric&appid=${KEY}`)  //из прошлого
     const data = await api_url.json()
-    //console.log(data)
- 
-    
-    
+
     let datesJSON = data.current.dt
     let images = Math.ceil(data.current.weather)
     let temperature = Math.ceil(data.current.temp)
@@ -72,8 +64,8 @@ let lon = arr[1]
 
     let dates = (`${dataF} ${month} ${year}`)
     setDates({ dates })
-  }
 
+  }
 
   let temp = Object.values(wea)
   let ima = Object.values(image)
@@ -81,6 +73,9 @@ let lon = arr[1]
 
 
 
+
+
+ 
 
   const getWeather7days = async (lat, lon) => {
 
@@ -92,36 +87,38 @@ let lon = arr[1]
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current&units=metric&appid=${KEY}`)  //7 дней
 
     const data = await api_weather_url.json()
-   // console.log(data.daily)
+
+
+    // console.log(data.daily)
     let dataSeven = data.daily
-
-      setDataSeven({dataSeven})
+    setDataSeven({ dataSeven })
 
 
   }
 
 
-  //getWeather7days(51.533557, 46.034257)
 
-  function changeCity(event, lat, lon) {
+
+{ /* function changeCity(event, lat = 51.533557, lon = 46.034257) {
     //console.log(lat)
-  //  console.log(lon)
+    //  console.log(lon)
     setSelectCity({ value: event.target.value })//кнопка
-    getWeatherAfter(51.533557, 46.034257) //асинхрон запрос
-   // getWeatherAfter(lat, lon) //асинхрон запрос
+    getWeatherAfter(lat, lon) //асинхрон запрос
+  }*/}
+
+  const getLatLon = (city) => cities[city] ?? [];
+
+
+  const changeCitySevenDays = (value) => {
+    const [lat, lon] = getLatLon(value);
+    getWeather7days(lat, lon);
   }
 
-  function changeCitySevenDays (event, lat, lon) {
-    console.log(event.target.value)
-  //  console.log(lat)
-    //console.log(lon)
-      setSelectCity({ value: event.target.value })//кнопка забирает данные с кнопки
-     getWeather7days(51.533557, 46.034257) //асинхрон запрос
+
+  const changeCity = (value) => {
+    const [lat, lon] = getLatLon(value);
+    getWeatherAfter(lat, lon);
   }
-
-  console.log(selectCity.value)  //получает город
-
-
 
   return (
     <div className="blocks">
@@ -131,7 +128,7 @@ let lon = arr[1]
         <div className="blocks__card__inputs">
 
 
-          <select className="blocks__card__select" value={selectCity.value} onChange={changeCitySevenDays} placeholder="Select City" selected>
+          <select className="blocks__card__select" /*value={selectCity.value}*/ onChange={e => changeCitySevenDays(e.target.value)} placeholder="Select City" selected>
             <option type="text" name="city" value="Самара">Самара</option>
             <option type="text" name="city" value="Тольятти">Тольятти</option>
             <option type="text" name="city" value="Саратов">Саратов</option>
@@ -139,7 +136,7 @@ let lon = arr[1]
             <option type="text" name="city" value="Краснодар">Краснодар</option>
           </select>
         </div>
-        < SevenDaysForecast dataSeven={dataSeven}/>
+        < SevenDaysForecast dataSeven={dataSeven} />
 
       </div>
 
@@ -147,7 +144,7 @@ let lon = arr[1]
       <div className="blocks__card">
         <h1 className="blocks__card__header">Forecast for a Date in the Past</h1>
         <div className="blocks__card__inputs">
-          <select className="blocks__card__select" getWeatherAfter={getWeatherAfter} onChange={changeCity} placeholder="Select City">
+          <select className="blocks__card__select" /*getWeatherAfter={getWeatherAfter} */ onChange={e => changeCity(e.target.value)} placeholder="Select City">
             <option>Самара</option>
             <option>Тольятти</option>
             <option>Саратов</option>
@@ -156,7 +153,7 @@ let lon = arr[1]
           </select>
           <input className="blocks__card__select" placeholder="Select data">
 
-           { /*<Modal isOpened={modal} setModal={setModal} />*/}
+            { /*<Modal isOpened={modal} setModal={setModal} />*/}
 
           </input>
         </div>
