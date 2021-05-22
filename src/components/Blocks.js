@@ -10,16 +10,7 @@ import SevenDaysForecast from './SevenDaysForecast'
 function Blocks() {
 
 
-  // const [modal, setModal] = useState(false)
-  const [selectCity, setSelectCity] = useState([])
-
-
-
-  const selectCityToString = Object.values(selectCity).join()
-  //console.log(selectCityToString)
-
-
-  const cities = {
+ const cities = {
     'Самара': [53.195873, 50.100193],
     'Тольятти': [53.507836, 49.420393],
     'Саратов': [51.533557, 46.034257],
@@ -34,13 +25,15 @@ function Blocks() {
 
   //const [dataSeven, setDataSeven] = useState('')
   const [dataSeven, setDataSeven] = useState([])
+  console.log(dataSeven)
 
 
 
   const getWeatherAfter = async (lat, lon) => {
 
-    //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d';
-    const KEY = '82b797b6ebc625032318e16f1b42c016'
+    const KEY = '4ca8521531042afe2d4080affc6fb41e' // мой
+    //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d'
+    //const KEY = '82b797b6ebc625032318e16f1b42c016'
     //  e.preventDefault();
     let time = Math.trunc(new Date().getTime() / 1000);  //округление
 
@@ -79,9 +72,11 @@ function Blocks() {
 
   const getWeather7days = async (lat, lon) => {
 
-    //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d';
-    const KEY = '82b797b6ebc625032318e16f1b42c016'
+    const KEY = '4ca8521531042afe2d4080affc6fb41e';  //мой
 
+    //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d';
+   // const KEY = '82b797b6ebc625032318e16f1b42c016'
+ //   const KEY = 'e486c33df43a0462ba98a38ea4850f06'
 
     const api_weather_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current&units=metric&appid=${KEY}`)  //7 дней
@@ -95,16 +90,6 @@ function Blocks() {
 
 
   }
-
-
-
-
-{ /* function changeCity(event, lat = 51.533557, lon = 46.034257) {
-    //console.log(lat)
-    //  console.log(lon)
-    setSelectCity({ value: event.target.value })//кнопка
-    getWeatherAfter(lat, lon) //асинхрон запрос
-  }*/}
 
   const getLatLon = (city) => cities[city] ?? [];
 
@@ -120,6 +105,15 @@ function Blocks() {
     getWeatherAfter(lat, lon);
   }
 
+  const changeDate = (value) => {
+    //let date = new Date(value)
+    //console.log(date.getDate()+'.'+(date.getMonth()+1+'.' +date.getFullYear()));
+    console.log(value) //2021-05-16
+
+
+    //getWeatherAfter(value2);
+  }
+
   return (
     <div className="blocks">
 
@@ -128,7 +122,7 @@ function Blocks() {
         <div className="blocks__card__inputs">
 
 
-          <select className="blocks__card__select" /*value={selectCity.value}*/ onChange={e => changeCitySevenDays(e.target.value)} placeholder="Select City" selected>
+          <select className="blocks__card__select" onChange={e => changeCitySevenDays(e.target.value)} placeholder="Select City" selected>
             <option type="text" name="city" value="Самара">Самара</option>
             <option type="text" name="city" value="Тольятти">Тольятти</option>
             <option type="text" name="city" value="Саратов">Саратов</option>
@@ -144,16 +138,15 @@ function Blocks() {
       <div className="blocks__card">
         <h1 className="blocks__card__header">Forecast for a Date in the Past</h1>
         <div className="blocks__card__inputs">
-          <select className="blocks__card__select" /*getWeatherAfter={getWeatherAfter} */ onChange={e => changeCity(e.target.value)} placeholder="Select City">
+          <select className="blocks__card__select" onChange={e => changeCity(e.target.value)} placeholder="Select City">
             <option>Самара</option>
             <option>Тольятти</option>
             <option>Саратов</option>
             <option>Казань</option>
             <option>Краснодар</option>
           </select>
-          <input className="blocks__card__select" placeholder="Select data">
+          <input className="blocks__card__select" type="date" onChange={e => changeDate(e.target.value)}>
 
-            { /*<Modal isOpened={modal} setModal={setModal} />*/}
 
           </input>
         </div>

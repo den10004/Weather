@@ -7,6 +7,7 @@ function SevenDaysForecast({ dataSeven }) {
 
      let ds = dataSeven.dataSeven
 
+
       return (
 
             <div>
@@ -15,10 +16,10 @@ function SevenDaysForecast({ dataSeven }) {
                               {
                                     ds && ds.map((e) =>
 
-                                          <div className="slider__card">
+                                          <div className="slider__card" key={e.id}>
                                                 <div className="slider__card__data">{e.dt}</div>
                                                 <img className="slider__card__image" src={rain} alt='rain_image' />
-                                                <div className="slider__card__temperature">&deg; C</div>
+                                                <div className="slider__card__temperature">{e.temp.day}&deg; C</div>
                                           </div>)
                               }
 
