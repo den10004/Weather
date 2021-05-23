@@ -2,11 +2,45 @@
     width: 100%;
 }
 
+.sevenDaysForecast1 {
+    width: 100%;
+    position: relative;
+ 
+}
+
 .slider {
     display: flex;
     justify-content: space-between;
     margin-top: 54px;
+  
 }
+
+.slider1 {
+    border: 2px solid black;
+    width: 90%;
+    height: 256px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+/*
+
+.slider-line {
+    width: 1024px;
+    height: 200px;
+    display: flex;
+    position: relative;
+    left: 0 px;
+    transition: all ease 1s;
+
+}
+
+.slider-line1 {
+    width: 80%;
+    height: 200px;
+    display: flex;
+    left: 0;
+    transition: all ease 1s;
+}*/
 
 .slider__card {
     background: #373AF5;  
@@ -41,4 +75,17 @@
     line-height: 32px;   
     color: #FFFFFF;
     text-align: right;    
+}
+
+.slider-prev {
+    position: absolute;
+    top: 37%;
+    left: 0%;
+}
+
+.slider-next {
+    position: absolute;
+    align-items: center;
+    top: 37%;
+    left: 95%;
 }

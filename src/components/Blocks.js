@@ -1,10 +1,10 @@
-//import '../styles/Blocks/Block.css';
-import { React, useState } from 'react'
-//import CloudImage from './CloudImage'
 
-import OneDayForecast from './OneDayForecast'
+import { React, useState } from 'react'
+
+
+import OneDayForecast from './OneDayForecast.js'
 import SevenDaysForecast from './SevenDaysForecast'
-//import Modal from './Modal'
+
 
 
 function Blocks() {

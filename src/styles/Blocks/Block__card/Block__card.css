@@ -28,8 +28,16 @@
   @media (max-width: 768px) {
     .blocks__card {
       padding: 32px 24px 0px 24px; 
+      width: 80%;
     }
   }
+
+  @media (max-width: 425px) {
+    .blocks__card {
+      width: 85%;
+    }
+  }
+  
   
 
 
