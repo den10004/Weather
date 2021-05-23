@@ -10,7 +10,7 @@ import SevenDaysForecast from './SevenDaysForecast'
 function Blocks() {
 
 
- const cities = {
+  const cities = {
     'Самара': [53.195873, 50.100193],
     'Тольятти': [53.507836, 49.420393],
     'Саратов': [51.533557, 46.034257],
@@ -23,23 +23,31 @@ function Blocks() {
   const [image, setImage] = useState([])
   const [dates, setDates] = useState([])
 
-  //const [dataSeven, setDataSeven] = useState('')
+  //console.log(weatherAfter.weatherAfter)
+
   const [dataSeven, setDataSeven] = useState([])
-  console.log(dataSeven)
 
 
+
+
+  function xx(value) {
+    let time = new Date(value).getTime() / 1000;  //округление
+    console.log(time)
+  }
 
   const getWeatherAfter = async (lat, lon) => {
 
     const KEY = '4ca8521531042afe2d4080affc6fb41e' // мой
     //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d'
     //const KEY = '82b797b6ebc625032318e16f1b42c016'
-    //  e.preventDefault();
+    // e.preventDefault();
     let time = Math.trunc(new Date().getTime() / 1000);  //округление
+    //let time = new Date().getTime() / 1000;  //округление
 
     const api_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&units=metric&appid=${KEY}`)  //из прошлого
     const data = await api_url.json()
+
 
     let datesJSON = data.current.dt
     let images = Math.ceil(data.current.weather)
@@ -49,13 +57,15 @@ function Blocks() {
 
 
     //преобразование даты
-    let dataFix = new Date(datesJSON * 1000)
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    let dataF = dataFix.getDate()
-    let month = months[dataFix.getMonth()]
-    let year = dataFix.getFullYear()
 
-    let dates = (`${dataF} ${month} ${year}`)
+    let options = {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric'
+    }
+    let date = new Date(datesJSON * 1000);
+    let dates = date.toLocaleString('ru', options)
+
     setDates({ dates })
 
   }
@@ -64,19 +74,13 @@ function Blocks() {
   let ima = Object.values(image)
   let datesToRender = Object.values(dates)
 
-
-
-
-
- 
-
   const getWeather7days = async (lat, lon) => {
 
     const KEY = '4ca8521531042afe2d4080affc6fb41e';  //мой
 
     //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d';
-   // const KEY = '82b797b6ebc625032318e16f1b42c016'
- //   const KEY = 'e486c33df43a0462ba98a38ea4850f06'
+    // const KEY = '82b797b6ebc625032318e16f1b42c016'
+    //   const KEY = 'e486c33df43a0462ba98a38ea4850f06'
 
     const api_weather_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current&units=metric&appid=${KEY}`)  //7 дней
@@ -93,7 +97,6 @@ function Blocks() {
 
   const getLatLon = (city) => cities[city] ?? [];
 
-
   const changeCitySevenDays = (value) => {
     const [lat, lon] = getLatLon(value);
     getWeather7days(lat, lon);
@@ -101,6 +104,7 @@ function Blocks() {
 
 
   const changeCity = (value) => {
+    console.log(value)
     const [lat, lon] = getLatLon(value);
     getWeatherAfter(lat, lon);
   }
@@ -108,7 +112,8 @@ function Blocks() {
   const changeDate = (value) => {
     //let date = new Date(value)
     //console.log(date.getDate()+'.'+(date.getMonth()+1+'.' +date.getFullYear()));
-    console.log(value) //2021-05-16
+    //console.log(value) //2021-05-16
+    xx(value)
 
 
     //getWeatherAfter(value2);

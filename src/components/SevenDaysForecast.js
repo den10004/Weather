@@ -5,9 +5,20 @@ import '../styles/SevenDaysForecast/sevenDaysForecast.css'
 
 function SevenDaysForecast({ dataSeven }) {
 
-     let ds = dataSeven.dataSeven
+      let ds = dataSeven.dataSeven
+      
+         function converter (a) {
+            let options = {
+                  day: 'numeric',
+                  month: 'numeric',
+                  year: 'numeric'
+                }
+                let date = new Date(a * 1000);
+                return  <div className="slider__card__data">{date.toLocaleString('ru', options)}</div>   
+         }
 
-
+      
+        
       return (
 
             <div>
@@ -15,11 +26,10 @@ function SevenDaysForecast({ dataSeven }) {
                         <div className="slider">
                               {
                                     ds && ds.map((e) =>
-
-                                          <div className="slider__card" key={e.id}>
-                                                <div className="slider__card__data">{e.dt}</div>
+                                          <div className="slider__card" key={e.id}>        
+                                                {converter(e.dt)}
                                                 <img className="slider__card__image" src={rain} alt='rain_image' />
-                                                <div className="slider__card__temperature">{e.temp.day}&deg; C</div>
+                                                <div className="slider__card__temperature">{Math.ceil(e.temp.day)}&deg; C</div>
                                           </div>)
                               }
 
