@@ -1,13 +1,13 @@
 import '../styles/SevenDaysForecast/sevenDaysForecast.css'
-//import {useRef} from 'react'
+import CloudImage from './CloudImage'
 
 
 
 function SevenDaysForecast({ dataSeven }) {
 
       let ds = dataSeven.dataSeven
+     // console.log(ds.index)
       let offset = 0;
-      //const sliderLine = useRef(null);
 
       let sliderLine = {
             width: '80%',
@@ -16,9 +16,9 @@ function SevenDaysForecast({ dataSeven }) {
             position: 'relative',
             left: '0px',
             transition: 'all ease 1s',
-      } 
+      }
 
-     
+
       function converter(a) {
             let options = {
                   day: 'numeric',
@@ -30,30 +30,23 @@ function SevenDaysForecast({ dataSeven }) {
       }
 
       function prev() {
-        
+
             offset = offset + 127;
             if (offset > 508) {
-                offset = 0;
-                sliderLine = Object.assign({"left": "-127px"})            
+                  offset = 0;
+                  sliderLine = Object.assign({ "left": "-127px" })
             }
       }
       //    sliderLine.style.left = -offset + 'px';
 
       console.log(sliderLine.left)
 
-      function x () {
-            console.log(Object.assign({"left": "127"}));
-            
-      }
-      x()
-
+ 
       function next() {
-           
+
             offset = offset - 127;
             if (offset < 0) {
-                offset = 508;
-              //   sliderLine.style.left = -offset + 'px';
-        
+                  offset = 508;
             }
       }
 
@@ -61,36 +54,31 @@ function SevenDaysForecast({ dataSeven }) {
       return (
 
             <>
-                  { /*   <div className="sevenDaysForecast">
-                        <div className="slider">
-                              {
-                                    ds && ds.map((e) =>
-                                          <div className="slider__card" key={e.id}>
-                                                {converter(e.dt)}
-                                                <img className="slider__card__image" src={`http://openweathermap.org/img/wn/${e.weather[0].icon}@2x.png`} alt='rain_image' />
-                                                <div className="slider__card__temperature">{Math.ceil(e.temp.day)}&deg; C</div>
-                                          </div>)
-                              }
-                        </div>
-                        </div>*/}
+                  {ds ? (
+                        <div className="sevenDaysForecast">
+                              <div className="slider">
+                                    <div style={sliderLine} >
+                                          {
+                                                ds && ds.map((e, index) =>
+                                                      <div className="slider__card" key={index}>
+                                                            {converter(e.dt)}
+                                                            <img className="slider__card__image" src={`http://openweathermap.org/img/wn/${e.weather[0].icon}@2x.png`} alt='rain_image' />
+                                                            <div className="slider__card__temperature">{Math.ceil(e.temp.day)}&deg; C</div>
+                                                      </div>)
+                                          }
+                                    </div>
 
-                  <div className="sevenDaysForecast1">
-                        <div className="slider1">
-                              <div style={sliderLine} >
-                                    {
-                                          ds && ds.map((e) =>
-                                                <div className="slider__card" key={e.id}>
-                                                      {converter(e.dt)}
-                                                      <img className="slider__card__image" src={`http://openweathermap.org/img/wn/${e.weather[0].icon}@2x.png`} alt='rain_image' />
-                                                      <div className="slider__card__temperature">{Math.ceil(e.temp.day)}&deg; C</div>
-                                                </div>)
-                                    }
                               </div>
-
+                              <button className="slider-prev" onClick={prev}>Prev</button>
+                              <button className="slider-next" onClick={next}>Next</button>
                         </div>
-                        <button class="slider-prev" onClick={prev}>Prev</button>
-                        <button class="slider-next" onClick={next}>Next</button>
-                  </div>
+
+                  ) : (
+                        <CloudImage />
+                  )
+
+                  }
+
 
 
 

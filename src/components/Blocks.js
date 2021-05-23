@@ -10,6 +10,8 @@ import SevenDaysForecast from './SevenDaysForecast'
 function Blocks() {
 
 
+  const KEY = '4ca8521531042afe2d4080affc6fb41e'
+
   const cities = {
     'Самара': [53.195873, 50.100193],
     'Тольятти': [53.507836, 49.420393],
@@ -29,19 +31,11 @@ function Blocks() {
 
 
 
-  function xx(value) {
-    let time = new Date(value).getTime() / 1000;  //округление
-    console.log(time)
-  }
-
   const getWeatherAfter = async (lat, lon) => {
 
-    const KEY = '4ca8521531042afe2d4080affc6fb41e' // мой
-    //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d'
-    //const KEY = '82b797b6ebc625032318e16f1b42c016'
-    // e.preventDefault();
+ 
     let time = Math.trunc(new Date().getTime() / 1000);  //округление
-    //let time = new Date().getTime() / 1000;  //округление
+
 
     const api_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&units=metric&appid=${KEY}`)  //из прошлого
@@ -72,16 +66,9 @@ function Blocks() {
 
 
   let temp = Object.values(wea)
-  // let ima = Object.values(image)
   let datesToRender = Object.values(dates)
 
   const getWeather7days = async (lat, lon) => {
-
-    const KEY = '4ca8521531042afe2d4080affc6fb41e';  //мой
-
-    //const KEY = '8ddb2ae4d480545c1441bb2374c9ff6d';
-    // const KEY = '82b797b6ebc625032318e16f1b42c016'
-    //   const KEY = 'e486c33df43a0462ba98a38ea4850f06'
 
     const api_weather_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current&units=metric&appid=${KEY}`)  //7 дней
@@ -112,7 +99,7 @@ function Blocks() {
     //let date = new Date(value)
     //console.log(date.getDate()+'.'+(date.getMonth()+1+'.' +date.getFullYear()));
     //console.log(value) //2021-05-16
-    xx(value)
+
 
 
     //getWeatherAfter(value2);
