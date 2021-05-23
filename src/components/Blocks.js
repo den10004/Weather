@@ -20,10 +20,9 @@ function Blocks() {
 
 
   const [wea, setWea] = useState([]) //из прошлого
-  const [image, setImage] = useState([])
+  const [icon, setIcon] = useState([])
   const [dates, setDates] = useState([])
 
-  //console.log(weatherAfter.weatherAfter)
 
   const [dataSeven, setDataSeven] = useState([])
 
@@ -50,11 +49,10 @@ function Blocks() {
 
 
     let datesJSON = data.current.dt
-    let images = Math.ceil(data.current.weather)
+    let icon = data.current.weather[0].icon
     let temperature = Math.ceil(data.current.temp)
     setWea({ temperature })
-    setImage({ images })
-
+    setIcon({ icon })
 
     //преобразование даты
 
@@ -65,13 +63,16 @@ function Blocks() {
     }
     let date = new Date(datesJSON * 1000);
     let dates = date.toLocaleString('ru', options)
-
     setDates({ dates })
 
   }
 
+
+
+
+
   let temp = Object.values(wea)
-  let ima = Object.values(image)
+  // let ima = Object.values(image)
   let datesToRender = Object.values(dates)
 
   const getWeather7days = async (lat, lon) => {
@@ -87,8 +88,6 @@ function Blocks() {
 
     const data = await api_weather_url.json()
 
-
-    // console.log(data.daily)
     let dataSeven = data.daily
     setDataSeven({ dataSeven })
 
@@ -155,7 +154,7 @@ function Blocks() {
 
           </input>
         </div>
-        < OneDayForecast temp={temp} ima={ima} datesToRender={datesToRender} />
+        < OneDayForecast temp={temp} datesToRender={datesToRender} icon={icon} />
 
       </div>
     </div>
