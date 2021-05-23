@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/weather/static/css/main.d325bf97.chunk.css",
+    "main.js": "/weather/static/js/main.574eb88d.chunk.js",
+    "main.js.map": "/weather/static/js/main.574eb88d.chunk.js.map",
+    "runtime-main.js": "/weather/static/js/runtime-main.1231465c.js",
+    "runtime-main.js.map": "/weather/static/js/runtime-main.1231465c.js.map",
+    "static/js/2.b04426ac.chunk.js": "/weather/static/js/2.b04426ac.chunk.js",
+    "static/js/2.b04426ac.chunk.js.map": "/weather/static/js/2.b04426ac.chunk.js.map",
+    "static/js/3.109518fd.chunk.js": "/weather/static/js/3.109518fd.chunk.js",
+    "static/js/3.109518fd.chunk.js.map": "/weather/static/js/3.109518fd.chunk.js.map",
+    "index.html": "/weather/index.html",
+    "static/css/main.d325bf97.chunk.css.map": "/weather/static/css/main.d325bf97.chunk.css.map",
+    "static/js/2.b04426ac.chunk.js.LICENSE.txt": "/weather/static/js/2.b04426ac.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/weather/static/media/Ubuntu-Regular.5d534041.ttf",
+    "static/media/cloud.1a743710.svg": "/weather/static/media/cloud.1a743710.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1231465c.js",
+    "static/js/2.b04426ac.chunk.js",
+    "static/css/main.d325bf97.chunk.css",
+    "static/js/main.574eb88d.chunk.js"
+  ]
+}
