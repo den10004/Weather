@@ -54,12 +54,10 @@ function SevenDaysForecast({ dataSeven }) {
                         e.style = `transform: translateX(${position}px)`
                   })
             }
-
       }
 
       return (
             <>
-
                   {  ds ? (
                         <div className='slider'>
                               <div className='slider_track' ref={slider}>
