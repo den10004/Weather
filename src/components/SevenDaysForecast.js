@@ -1,6 +1,8 @@
 import '../styles/SevenDaysForecast/sevenDaysForecast.css'
 import CloudImage from './CloudImage'
 import React, { useState, useRef } from 'react'
+import cloud from '../images/cloud.svg';
+
 
 
 
@@ -9,8 +11,8 @@ function SevenDaysForecast({ dataSeven }) {
       let ds = dataSeven.dataSeven
 
       let sliderLine = {
-            width: '80%',
-            height: '200px',
+            width: '100%',
+            height: '238px',
             display: 'flex',
             position: 'relative',
             left: '0px',
@@ -68,7 +70,7 @@ function SevenDaysForecast({ dataSeven }) {
 
             <>
                   {  ds ? (
-                        <div className='sliders'>
+                        <div className='slider'>
                               <div className='slider_track' ref={slider}>
                                     {items.map(() => {
                                           return (
@@ -90,8 +92,8 @@ function SevenDaysForecast({ dataSeven }) {
                                           )
                                     })}
                               </div>
-                              <button className='slider__button_prev' onClick={nextHandler}>next</button>
-                              <button className='slider__button_next' onClick={prevHandler}>prev</button>
+                              <button className='slider__button_next' onClick={nextHandler}></button>
+                              <button className='slider__button_prev' onClick={prevHandler}></button>
 
 
 

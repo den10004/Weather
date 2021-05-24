@@ -4,13 +4,11 @@
 }
 
 .slider {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 54px;
-    width: 90%;
-    height: 256px;
-    margin: 20px auto;
-    overflow: hidden;  
+  margin-top: 54px;
+  width: 98%;
+  background-color: black;
+  position: relative;
+  justify-content: space-between;
 }
 
 
@@ -77,25 +75,6 @@
   }
   
 
-  .slider__item:nth-child(2n) {
-    background-color: red;
-  }
-  
-  .slider__item:nth-child(2n+1) {
-    background-color: blue;
-  }
-  
-  .slider__item:nth-child(2n+2) {
-    background-color: green;
-  }
-  
-  
-.sliders {
-    margin-top: 54px;
-    width: 98%;
-    background-color: black;
-    position: relative;
-  }
   
   .slider_track {
     width: 100%;
@@ -110,6 +89,7 @@
     min-width: 238px;
     height: 238px;
     transition: .1s;
+    margin-right: 6px;
   }
   /*
   .slider__item:nth-child(2n) {
@@ -126,12 +106,29 @@
   
   */
   
-  .slider__button_prev {
-    position: absolute;
-    right: 0px;
-  }
-  
   .slider__button_next {
     position: absolute;
-    right:550px;
+    right: -7%;
+    top: 50%;
+    border: 0px;
+    width: 24x;
+    height: 24px;
+    background-image: url('/src/images/icons/16/buttonRight.svg');
+    background-repeat: no-repeat;
+    z-index: 2;
+    background-color: white;
+  }
+  
+  .slider__button_prev {
+    position: absolute;
+    right:103%;
+    top: 50%;
+    z-index: 2;
+    border: 0px;
+    width: 24x;
+    height: 24px;
+    background-image: url('/src/images/icons/16//buttonLeft.svg');
+    background-repeat: no-repeat;
+    z-index: 2;
+    background-color: white;
   }
