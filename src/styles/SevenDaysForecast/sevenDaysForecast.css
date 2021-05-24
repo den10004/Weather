@@ -60,13 +60,6 @@
     left: 95%;
 }
 
-.slider_track {
-    width: 100%;
-    height: 100%;
-    background-color: powderblue;
-    display: flex;
-    overflow: hidden;
-  }
 
   .slider__item {
     min-width: 100px;

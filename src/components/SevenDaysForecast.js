@@ -1,7 +1,6 @@
 import '../styles/SevenDaysForecast/sevenDaysForecast.css'
 import CloudImage from './CloudImage'
 import React, { useState, useRef } from 'react'
-import cloud from '../images/cloud.svg';
 
 
 
@@ -29,6 +28,8 @@ function SevenDaysForecast({ dataSeven }) {
             let date = new Date(a * 1000);
             return <div className="slider__card__data">{date.toLocaleString('ru', options)}</div>
       }
+
+
 
       const [items, setItems] = useState([1])
 

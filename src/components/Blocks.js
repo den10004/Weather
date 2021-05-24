@@ -113,7 +113,8 @@ function Blocks() {
         <div className="blocks__card__inputs">
 
 
-          <select className="blocks__card__select" onChange={e => changeCitySevenDays(e.target.value)} placeholder="Select City" selected>
+          <select className="blocks__card__select" onChange={e => changeCitySevenDays(e.target.value)}>
+          <option selected disabled>Select City</option>
             <option type="text" name="city" value="Самара">Самара</option>
             <option type="text" name="city" value="Тольятти">Тольятти</option>
             <option type="text" name="city" value="Саратов">Саратов</option>
@@ -129,7 +130,8 @@ function Blocks() {
       <div className="blocks__card">
         <h1 className="blocks__card__header">Forecast for a Date in the Past</h1>
         <div className="blocks__card__inputs">
-          <select className="blocks__card__select" onChange={e => changeCity(e.target.value)} placeholder="Select City">
+          <select className="blocks__card__select" onChange={e => changeCity(e.target.value)}>
+          <option selected disabled>Select City</option>
             <option>Самара</option>
             <option>Тольятти</option>
             <option>Саратов</option>
