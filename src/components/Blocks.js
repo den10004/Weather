@@ -1,7 +1,6 @@
 
 import { React, useState } from 'react'
 
-
 import OneDayForecast from './OneDayForecast.js'
 import SevenDaysForecast from './SevenDaysForecast'
 

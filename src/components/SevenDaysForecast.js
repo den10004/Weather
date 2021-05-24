@@ -9,16 +9,6 @@ function SevenDaysForecast({ dataSeven }) {
 
       let ds = dataSeven.dataSeven
 
-      let sliderLine = {
-            width: '100%',
-            height: '238px',
-            display: 'flex',
-            position: 'relative',
-            left: '0px',
-            transition: 'all ease 1s',
-      }
-
-
       function converter(a) {
             let options = {
                   day: 'numeric',
@@ -68,30 +58,26 @@ function SevenDaysForecast({ dataSeven }) {
       }
 
       return (
-
             <>
+
                   {  ds ? (
                         <div className='slider'>
                               <div className='slider_track' ref={slider}>
-                                    {items.map(() => {
-                                          return (
-                                                <div className='slider__item'>
-
-                                                      <div style={sliderLine} >
-                                                            {
-                                                                  ds && ds.map((e, index) =>
-                                                                        <div className="slider__card" key={index}>
-                                                                              {converter(e.dt)}
-                                                                              <img className="slider__card__image" src={`http://openweathermap.org/img/wn/${e.weather[0].icon}@2x.png`} alt='rain_image' />
-                                                                              <div className="slider__card__temperature">{Math.ceil(e.temp.day)}&deg; C</div>
-                                                                        </div>)
-                                                            }
-                                                      </div>
+                                    <div className='slider__item'>
+                                          <div className='slider-line'>
+                                                {
+                                                      ds && ds.map((e, index) =>
+                                                            <div className="slider__card" key={index}>
+                                                                  {converter(e.dt)}
+                                                                  <img className="slider__card__image" src={`http://openweathermap.org/img/wn/${e.weather[0].icon}@2x.png`} alt='rain_image' />
+                                                                  <div className="slider__card__temperature">{Math.ceil(e.temp.day)}&deg; C</div>
+                                                            </div>)
+                                                }
+                                          </div>
 
 
-                                                </div>
-                                          )
-                                    })}
+                                    </div>
+
                               </div>
                               <button className='slider__button_next' onClick={nextHandler}></button>
                               <button className='slider__button_prev' onClick={prevHandler}></button>
@@ -111,4 +97,11 @@ function SevenDaysForecast({ dataSeven }) {
 }
 
 
+
+
 export default SevenDaysForecast;
+
+
+
+
+

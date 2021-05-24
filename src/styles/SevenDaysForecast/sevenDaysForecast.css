@@ -85,6 +85,15 @@
     margin-right: 6px;
   }
 
+  .slider-line {
+    width: 300%;
+    height: 238px;
+    display: flex;
+    position: relative;
+    left: 0px;
+    transition: all ease 1s;
+  }
+
   .slider__button_next {
     position: absolute;
     right: -7%;
