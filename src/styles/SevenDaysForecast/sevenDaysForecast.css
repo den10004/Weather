@@ -91,21 +91,7 @@
     transition: .1s;
     margin-right: 6px;
   }
-  /*
-  .slider__item:nth-child(2n) {
-    background-color: red;
-  }
-  
-  .slider__item:nth-child(2n+1) {
-    background-color: blue;
-  }
-  
-  .slider__item:nth-child(2n+2) {
-    background-color: green;
-  }
-  
-  */
-  
+
   .slider__button_next {
     position: absolute;
     right: -7%;
