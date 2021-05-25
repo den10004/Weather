@@ -1,8 +1,8 @@
 
 import { React, useState } from 'react'
 
-import OneDayForecast from './OneDayForecast'
-import SevenDaysForecast from './SevenDaysForecast'
+import OneDayForecast from './OneDayForecast.js'
+import SevenDaysForecast from './SevenDaysForecast.js'
 
 
 
@@ -30,16 +30,17 @@ function Blocks() {
 
 
 
-  const getWeatherAfter = async (lat, lon) => {
+  const getWeatherAfter = async (lat, lon, time) => {
 
  
-    let time = Math.trunc(new Date().getTime() / 1000);  //округление
+    //let time = Math.trunc(new Date().getTime() / 1000);  //округление
 
 
     const api_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&units=metric&appid=${KEY}`)  //из прошлого
     const data = await api_url.json()
 
+    console.log(data)
 
     let datesJSON = data.current.dt
     let icon = data.current.weather[0].icon
@@ -95,13 +96,10 @@ function Blocks() {
   }
 
   const changeDate = (value) => {
-    //let date = new Date(value)
-    //console.log(date.getDate()+'.'+(date.getMonth()+1+'.' +date.getFullYear()));
-    //console.log(value) //2021-05-16
-
-
-
-    //getWeatherAfter(value2);
+    let date = new Date(value)
+    let dateTo = date.getMonth() +1 + '/'+ date.getDate('') +'/' + date.getFullYear('')
+    let time = (Date.parse(dateTo))/1000
+    //getWeatherAfter(time)
   }
 
   return (

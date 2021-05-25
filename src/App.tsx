@@ -1,3 +1,4 @@
+import React from 'react';
 import Block from './components/Blocks'
 import './App.css';
 

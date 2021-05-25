@@ -6,6 +6,7 @@ function OneDayForecast({ temp, datesToRender, icon }) {
 
     let im = icon.icon
 
+
     return (
         <>
             {im ? (
