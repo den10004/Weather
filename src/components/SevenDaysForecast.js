@@ -79,16 +79,10 @@ function SevenDaysForecast({ dataSeven }) {
                               </div>
                               <button className='slider__button_next' onClick={nextHandler}></button>
                               <button className='slider__button_prev' onClick={prevHandler}></button>
-
-
-
                         </div>
-
-
                   ) : (
                         <CloudImage />
                   )
-
                   }
             </>
       );
