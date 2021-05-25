@@ -28,19 +28,19 @@ function Blocks() {
   const [dataSeven, setDataSeven] = useState([])
 
 
+  let dataDefault = Math.trunc(new Date().getTime() / 1000);
+
+  const getWeatherAfter = async (lat=45.035470, lon=38.975313, time = dataDefault) => {
+      console.log(lat)
+      console.log(lon)
+      console.log(time)
 
 
-  const getWeatherAfter = async (lat, lon) => {
-
- 
-  //округление
-  let time = Math.trunc(new Date().getTime() / 1000);
-
-    const api_url = await
+     const api_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&units=metric&appid=${KEY}`)  //из прошлого
     const data = await api_url.json()
 
-    console.log(data)
+  //  console.log(data)
 
     let datesJSON = data.current.dt
     let icon = data.current.weather[0].icon
@@ -58,31 +58,23 @@ function Blocks() {
     let date = new Date(datesJSON * 1000);
     let dates = date.toLocaleString('ru', options)
     setDates({ dates })
-
   }
-
-
-
-
 
   let temp = Object.values(wea)
   let datesToRender = Object.values(dates)
 
-  const getWeather7days = async (lat, lon) => {
 
+
+  const getWeather7days = async (lat, lon) => {
     const api_weather_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current&units=metric&appid=${KEY}`)  //7 дней
-
     const data = await api_weather_url.json()
-
     let dataSeven = data.daily
     setDataSeven({ dataSeven })
-
-
   }
 
-  const getLatLon = (city) => cities[city] ?? [];
 
+  const getLatLon = (city) => cities[city] ?? [];
   const changeCitySevenDays = (value) => {
     const [lat, lon] = getLatLon(value);
     getWeather7days(lat, lon);
@@ -90,17 +82,21 @@ function Blocks() {
 
 
   const changeCity = (value) => {
-    console.log(value)
     const [lat, lon] = getLatLon(value);
     getWeatherAfter(lat, lon);
   }
+
+
 
   const changeDate = (value) => {
     let date = new Date(value)
     let dateTo = date.getMonth() +1 + '/'+ date.getDate('') +'/' + date.getFullYear('')
     let time = (Date.parse(dateTo))/1000
-    //getWeatherAfter(time)
+    //console.log(time)
+   // getWeatherAfter(time)
   }
+
+
 
   return (
     <div className="blocks">
@@ -135,8 +131,8 @@ function Blocks() {
             <option>Казань</option>
             <option>Краснодар</option>
           </select>
-          <input className="blocks__card__select" type="date" onChange={e => changeDate(e.target.value)}>
-
+          <input className="blocks__card__select" type="date" onChange={e => changeDate(e.target.value)}>    
+         { /* <input className="blocks__card__select" type="date" onChange={e => changeCity(e.target.value)}>    */  }    
 
           </input>
         </div>
