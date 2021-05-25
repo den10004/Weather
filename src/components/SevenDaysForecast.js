@@ -21,8 +21,7 @@ function SevenDaysForecast({ dataSeven }) {
 
 
 
-      const [items, setItems] = useState([1])
-
+      //const [items, setItems] = useState([1])
 
       const slider = useRef(null)
       const [prev, setPrev] = useState(false)
@@ -44,7 +43,7 @@ function SevenDaysForecast({ dataSeven }) {
 
 
       const nextHandler = () => {
-            if (position === -(items.length - 6) * 100 + 100) {
+            if (position === -900) {
                   setNext(true)
                   setPrev(false)
             } else {
@@ -52,10 +51,11 @@ function SevenDaysForecast({ dataSeven }) {
                   position -= 300
                   slider.current.childNodes.forEach((e) => {
                         e.style = `transform: translateX(${position}px)`
-                  })
+                  })              
             }
       }
 
+ 
       return (
             <>
                   {  ds ? (

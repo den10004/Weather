@@ -18,7 +18,7 @@
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
     border-radius: 8px;
-    width: 174px;
+    width: 150px;
     height: 238px;
     padding: 20px 20px 20px 20px;
 }
@@ -67,9 +67,8 @@
     background-color: white;
     display: flex;
     overflow: hidden;
-
   }
-  
+ 
   .slider__item {
     min-width: 238px;
     height: 238px;
@@ -77,7 +76,7 @@
   }
 
   .slider-line {
-    width: 300%;
+    width: 265%;
     height: 238px;
     display: flex;
     position: relative;
@@ -111,4 +110,23 @@
     background-repeat: no-repeat;
     z-index: 2;
     background-color: white;
+  }
+
+  @media (max-width: 768px) {
+    .slider__button_next {
+      right: -5%;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .slider__button_next {
+      right: -7%;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    .slider__button_prev {
+      right:101%;
+    }
   }
