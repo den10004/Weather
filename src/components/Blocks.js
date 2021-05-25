@@ -30,11 +30,11 @@ function Blocks() {
 
 
 
-  const getWeatherAfter = async (lat, lon, time) => {
+  const getWeatherAfter = async (lat, lon) => {
 
  
-    //let time = Math.trunc(new Date().getTime() / 1000);  //округление
-
+  //округление
+  let time = Math.trunc(new Date().getTime() / 1000);
 
     const api_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&units=metric&appid=${KEY}`)  //из прошлого
