@@ -39,18 +39,18 @@ function Blocks() {
 
 
   const getWeatherAfter = async () => {
-    console.log(lat)
-    console.log(lon)
-    console.log(time)
-
 
     const api_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&units=metric&appid=${KEY}`)  //из прошлого
     const data = await api_url.json()
 
-    console.log(data)
+    if(api_url.status >= 400 ) {
 
-    let datesJSON = data.current.dt
+      // валидация
+      return
+    }
+
+       let datesJSON = data.current.dt
     let icon = data.current.weather[0].icon
     let temperature = Math.ceil(data.current.temp)
     setWea({ temperature })
@@ -65,9 +65,7 @@ function Blocks() {
       year: 'numeric'
     }
     let date = new Date(datesJSON * 1000);
-
     let dates = date.toLocaleString('ru', options)
-
     setDates({ dates: String(dates) })
 
   }
@@ -97,7 +95,7 @@ function Blocks() {
     const [lat, lon] = getLatLon(value);
       setLat(lat)
       setLon(lon)
-    getWeatherAfter();
+
   }
 
   const changeDate = (value) => {
@@ -106,7 +104,7 @@ function Blocks() {
     let time = (Date.parse(dateTo)) / 1000
     // console.log(time)
       setTime(time)
-   getWeatherAfter()
+
   }
 
   useEffect(()=> {
@@ -119,8 +117,9 @@ function Blocks() {
         setDatesToRender([...Object.values(dates)])
     },[dates])
 
-
-
+    useEffect(()=> {
+      getWeatherAfter();
+    }, [lon,lat,time])
 
     return (
     <div className="blocks">
