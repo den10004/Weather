@@ -2,7 +2,7 @@
 import {React, useEffect, useState} from 'react';
 
 import OneDayForecast from './OneDayForecast'
-import SevenDaysForecast from './SevenDaysForecast.js'
+import SevenDaysForecast from './SevenDaysForecast'
 
 
 
