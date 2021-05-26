@@ -1,5 +1,5 @@
 
-import { React, useState } from 'react'
+import {React, useEffect, useState} from 'react';
 
 import OneDayForecast from './OneDayForecast.js'
 import SevenDaysForecast from './SevenDaysForecast.js'
@@ -20,18 +20,25 @@ function Blocks() {
   }
 
 
+    let dataDefault = Math.trunc(new Date().getTime() / 1000);
   const [wea, setWea] = useState([]) //из прошлого
   const [icon, setIcon] = useState([])
   const [dates, setDates] = useState([])
+  const [lat, setLat] = useState(45.035470)
+  const [lon, setLon] = useState(38.975313)
+  const [time, setTime] = useState(dataDefault)
+
+
+    const [temp,setTemp] = useState(Object.values(wea))
+    const [datesToRender,setDatesToRender] = useState(Object.values(dates))
 
 
   const [dataSeven, setDataSeven] = useState([])
 
 
-  let dataDefault = Math.trunc(new Date().getTime() / 1000);
 
 
-  const getWeatherAfter = async ({ lat = 45.035470, lon = 38.975313, time = dataDefault}) => {
+  const getWeatherAfter = async () => {
     console.log(lat)
     console.log(lon)
     console.log(time)
@@ -49,6 +56,7 @@ function Blocks() {
     setWea({ temperature })
     setIcon({ icon })
 
+
     //преобразование даты
 
     let options = {
@@ -57,13 +65,13 @@ function Blocks() {
       year: 'numeric'
     }
     let date = new Date(datesJSON * 1000);
+
     let dates = date.toLocaleString('ru', options)
-    setDates({ dates })
+
+    setDates({ dates: String(dates) })
 
   }
 
-  let temp = Object.values(wea)
-  let datesToRender = Object.values(dates)
 
 
 
@@ -87,7 +95,9 @@ function Blocks() {
 
   const changeCity = (value) => {
     const [lat, lon] = getLatLon(value);
-    getWeatherAfter(lat, lon);
+      setLat(lat)
+      setLon(lon)
+    getWeatherAfter();
   }
 
   const changeDate = (value) => {
@@ -95,12 +105,24 @@ function Blocks() {
     let dateTo = date.getMonth() + 1 + '/' + date.getDate('') + '/' + date.getFullYear('')
     let time = (Date.parse(dateTo)) / 1000
     // console.log(time)
-  //  getWeatherAfter(time)
+      setTime(time)
+   getWeatherAfter()
   }
 
+  useEffect(()=> {
+      console.log(wea,'wea')
+      setTemp([...Object.values(wea)])
+  },[wea])
+
+    useEffect(()=> {
+        console.log(dates,'dates')
+        setDatesToRender([...Object.values(dates)])
+    },[dates])
 
 
-  return (
+
+
+    return (
     <div className="blocks">
 
       <div className="blocks__card">
@@ -127,11 +149,11 @@ function Blocks() {
         <div className="blocks__card__inputs">
           <select className="blocks__card__select" onChange={e => changeCity(e.target.value)}>
             <option selected disabled>Select City</option>
-            <option>Самара</option>
-            <option>Тольятти</option>
-            <option>Саратов</option>
-            <option>Казань</option>
-            <option>Краснодар</option>
+              <option type="text" name="city" value="Самара">Самара</option>
+              <option type="text" name="city" value="Тольятти">Тольятти</option>
+              <option type="text" name="city" value="Саратов">Саратов</option>
+              <option type="text" name="city" value="Казань">Казань</option>
+              <option type="text" name="city" value="Краснодар">Краснодар</option>
           </select>
           <input className="blocks__card__select" type="date" onChange={e => changeDate(e.target.value)}>
             { /* <input className="blocks__card__select" type="date" onChange={e => changeCity(e.target.value)}>    */}

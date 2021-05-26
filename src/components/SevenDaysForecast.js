@@ -19,13 +19,11 @@ function SevenDaysForecast({ dataSeven }) {
             return <div className="slider__card__data">{date.toLocaleString('ru', options)}</div>
       }
 
-
-
-      //const [items, setItems] = useState([1])
-
       const slider = useRef(null)
-      const [prev, setPrev] = useState(false)
-      const [next, setNext] = useState(false)
+      // eslint-disable-next-line
+      const [prev, setPrev] = useState(false) 
+      // eslint-disable-next-line
+      const [next, setNext] = useState(false) 
 
       let position = 0;
 
