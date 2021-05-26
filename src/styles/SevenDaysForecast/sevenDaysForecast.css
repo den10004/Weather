@@ -68,6 +68,8 @@
     display: flex;
     overflow: hidden;
   }
+
+  
  
   .slider__item {
     min-width: 238px;

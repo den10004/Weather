@@ -30,17 +30,18 @@ function Blocks() {
 
   let dataDefault = Math.trunc(new Date().getTime() / 1000);
 
-  const getWeatherAfter = async (lat=45.035470, lon=38.975313, time = dataDefault) => {
-      console.log(lat)
-      console.log(lon)
-      console.log(time)
+
+  const getWeatherAfter = async ({ lat = 45.035470, lon = 38.975313, time = dataDefault}) => {
+    console.log(lat)
+    console.log(lon)
+    console.log(time)
 
 
-     const api_url = await
+    const api_url = await
       fetch(`https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&units=metric&appid=${KEY}`)  //из прошлого
     const data = await api_url.json()
 
-  //  console.log(data)
+    console.log(data)
 
     let datesJSON = data.current.dt
     let icon = data.current.weather[0].icon
@@ -58,6 +59,7 @@ function Blocks() {
     let date = new Date(datesJSON * 1000);
     let dates = date.toLocaleString('ru', options)
     setDates({ dates })
+
   }
 
   let temp = Object.values(wea)
@@ -75,6 +77,8 @@ function Blocks() {
 
 
   const getLatLon = (city) => cities[city] ?? [];
+
+
   const changeCitySevenDays = (value) => {
     const [lat, lon] = getLatLon(value);
     getWeather7days(lat, lon);
@@ -86,14 +90,12 @@ function Blocks() {
     getWeatherAfter(lat, lon);
   }
 
-
-
   const changeDate = (value) => {
     let date = new Date(value)
-    let dateTo = date.getMonth() +1 + '/'+ date.getDate('') +'/' + date.getFullYear('')
-    let time = (Date.parse(dateTo))/1000
-    //console.log(time)
-   // getWeatherAfter(time)
+    let dateTo = date.getMonth() + 1 + '/' + date.getDate('') + '/' + date.getFullYear('')
+    let time = (Date.parse(dateTo)) / 1000
+    // console.log(time)
+  //  getWeatherAfter(time)
   }
 
 
@@ -107,7 +109,7 @@ function Blocks() {
 
 
           <select className="blocks__card__select" onChange={e => changeCitySevenDays(e.target.value)}>
-          <option selected disabled>Select City</option>
+            <option selected disabled>Select City</option>
             <option type="text" name="city" value="Самара">Самара</option>
             <option type="text" name="city" value="Тольятти">Тольятти</option>
             <option type="text" name="city" value="Саратов">Саратов</option>
@@ -124,15 +126,15 @@ function Blocks() {
         <h1 className="blocks__card__header">Forecast for a Date in the Past</h1>
         <div className="blocks__card__inputs">
           <select className="blocks__card__select" onChange={e => changeCity(e.target.value)}>
-          <option selected disabled>Select City</option>
+            <option selected disabled>Select City</option>
             <option>Самара</option>
             <option>Тольятти</option>
             <option>Саратов</option>
             <option>Казань</option>
             <option>Краснодар</option>
           </select>
-          <input className="blocks__card__select" type="date" onChange={e => changeDate(e.target.value)}>    
-         { /* <input className="blocks__card__select" type="date" onChange={e => changeCity(e.target.value)}>    */  }    
+          <input className="blocks__card__select" type="date" onChange={e => changeDate(e.target.value)}>
+            { /* <input className="blocks__card__select" type="date" onChange={e => changeCity(e.target.value)}>    */}
 
           </input>
         </div>
