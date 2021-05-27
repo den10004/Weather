@@ -47,7 +47,6 @@ function Blocks() {
       const data = await api_url.json()
 
     if(api_url.status >= 400 ) {
-      console.log('введите дату за 1- 5 дней')
       setDatesToRender([])
       setTemp([])
       setIcon([])
@@ -112,14 +111,12 @@ function Blocks() {
   }
 
   useEffect(()=> {
-    console.log(wea,'wea')
     setTemp([...Object.values(wea as IWea)])
   },[wea])
 
 
   useEffect(()=> {
-    console.log(dates,'dates')
-    setDatesToRender([...Object.values(dates as IDates)])
+     setDatesToRender([...Object.values(dates as IDates)])
   },[dates])
 
   useEffect(()=> {

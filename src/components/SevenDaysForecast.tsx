@@ -10,8 +10,10 @@ export type OwnODFProps = {
   export type ODFProps = FC<OwnODFProps>;
 
 const SevenDaysForecast: ODFProps = (dataSeven: any ) => {
+  
+     let ds:any = dataSeven.dataSeven.dataSeven
 
-      let ds: any = dataSeven?.dataSeven || ''
+
 
       function converter(a: number) {
             let options: object = {
@@ -24,10 +26,8 @@ const SevenDaysForecast: ODFProps = (dataSeven: any ) => {
       }
 
 
- // eslint-disable-next-line
+      // eslint-disable-next-line
       const [items, setItems] = useState<any>([1])
-
-
       const slider = useRef<any>(null)
        // eslint-disable-next-line
       const [prev, setPrev] = useState<any>(false)
@@ -50,7 +50,7 @@ const SevenDaysForecast: ODFProps = (dataSeven: any ) => {
 
 
       const nextHandler = () => {
-            if (position === -(items.length - 6) * 100 + 100) {
+            if (position === -900) {
                   setNext(true)
                   setPrev(false)
             } else {
@@ -58,7 +58,7 @@ const SevenDaysForecast: ODFProps = (dataSeven: any ) => {
                   position -= 300
                   slider.current.childNodes.forEach((e: any) => {
                         e.style = `transform: translateX(${position}px)`
-                  })
+                  })              
             }
       }
 
@@ -71,12 +71,13 @@ const SevenDaysForecast: ODFProps = (dataSeven: any ) => {
                                           <div className='slider-line'>
                                                 {
                                                       ds && ds.map((e: any, index: any) =>
+                                          
                                                             <div className="slider__card" key={index}>
                                                                   {converter(e.dt)}
                                                                   <img className="slider__card__image" src={`http://openweathermap.org/img/wn/${e.weather[0].icon}@2x.png`} alt='rain_image' />
                                                                   <div className="slider__card__temperature">{Math.ceil(e.temp.day)}&deg; C</div>
                                                             </div>)
-                                                }
+                                                 }
                                           </div>
 
 
@@ -89,6 +90,7 @@ const SevenDaysForecast: ODFProps = (dataSeven: any ) => {
                   ) : (
                         <CloudImage />
                   )
+              
                   }
             </>
       );
