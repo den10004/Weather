@@ -1,14 +1,17 @@
 import React, { useState, useRef } from 'react';
 import '../styles/SevenDaysForecast/sevenDaysForecast.css'
 import CloudImage from './CloudImage'
+import { FC } from 'react';
 
+export type OwnODFProps = {
+       dataSeven?: any;
+  }
+  
+  export type ODFProps = FC<OwnODFProps>;
 
+const SevenDaysForecast: ODFProps = (dataSeven: any ) => {
 
-
-
-function SevenDaysForecast(dataSeven: any ) {
-
-      let ds: any = dataSeven.dataSeven
+      let ds: any = dataSeven?.dataSeven || ''
 
       function converter(a: number) {
             let options: object = {
