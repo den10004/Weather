@@ -1,13 +1,5 @@
 import '../styles/OneDayForecast/oneDayForecast.css'
 import CloudImage from './CloudImage'
-/*
-interface OneDay {
-    temp: number;
-    datesToRender: any;
-    icon: any;
-}*/
-
-
 import { FC } from 'react';
 
 export type OwnODFProps = {

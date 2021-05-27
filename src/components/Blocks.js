@@ -20,13 +20,14 @@ function Blocks() {
   }
 
 
-    let dataDefault = Math.trunc(new Date().getTime() / 1000);
+  //let dataDefault = Math.trunc(new Date().getTime() / 1000);
+
   const [wea, setWea] = useState([]) //из прошлого
   const [icon, setIcon] = useState([])
   const [dates, setDates] = useState([])
   const [lat, setLat] = useState(45.035470)
   const [lon, setLon] = useState(38.975313)
-  const [time, setTime] = useState(dataDefault)
+  const [time, setTime] = useState([])  //(dataDefault)
 
 
     const [temp,setTemp] = useState(Object.values(wea))
@@ -100,26 +101,25 @@ function Blocks() {
 
   const changeDate = (value) => {
     let date = new Date(value)
-    let dateTo = date.getMonth() + 1 + '/' + date.getDate('') + '/' + date.getFullYear('')
-    let time = (Date.parse(dateTo)) / 1000
-    // console.log(time)
-      setTime(time)
-
+    let dateTo = (date.getMonth() + 1 + '/' + date.getDate('') + '/' + date.getFullYear('')) 
+   
+    
+    let time = (((Date.parse(dateTo)) / 1000) + 43200) 
+     setTime(time)
   }
 
   useEffect(()=> {
-      console.log(wea,'wea')
       setTemp([...Object.values(wea)])
   },[wea])
 
     useEffect(()=> {
-        console.log(dates,'dates')
-        setDatesToRender([...Object.values(dates)])
+         setDatesToRender([...Object.values(dates)])
     },[dates])
 
     useEffect(()=> {
       getWeatherAfter();
-    }, [lon,lat,time])
+      // eslint-disable-next-line
+    }, [lon,lat,time]) 
 
     return (
     <div className="blocks">
