@@ -21,12 +21,14 @@ function SevenDaysForecast(dataSeven: any ) {
       }
 
 
-
+ // eslint-disable-next-line
       const [items, setItems] = useState<any>([1])
 
 
       const slider = useRef<any>(null)
+       // eslint-disable-next-line
       const [prev, setPrev] = useState<any>(false)
+       // eslint-disable-next-line
       const [next, setNext] = useState<any>(false)
 
       let position = 0;
