@@ -19,4 +19,4 @@
 - sevenDaysForecast не переписан на TypeScript
 
 Страница проекта
-https://den10004.gib.io/Weather
+https://den10004.github.io/Weather
